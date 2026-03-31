@@ -1,0 +1,96 @@
+###
+# Pretrain on all data with all losses
+###
+
+# Experiment general info
+name: "FinalOVPretrain"
+rng_seed: 42
+num_gpu: 1
+mode: "pretrain"
+note: ""
+num_views: 32
+# Choose keywords to feature your saving directory
+naming_keywords: ["dataloader.batchsize", "task", "note", "time"]
+base_dir: "results"
+exp_dir: ""
+
+resume: False
+
+debug:
+  flag: False
+  debug_size: 20
+  hard_debug: False
+
+logger:
+  name: "wandb"
+  entity: "yem"
+
+# dataset details
+data:
+  note: "all"
+  pretrain: ['ScanNetSpatialRefer', 'RScanSpatialRefer', 'ARKitSceneSpatialRefer']
+  args:
+    use_scene_cap: True
+  ScanNetSpatialRefer:
+    pretrain:
+      sources: ['scannet_view_cap', 'ssg_ref_total_by_view_full']
+  RScanSpatialRefer:
+    pretrain:
+      sources: ['3rscan_view_cap']
+  ARKitSceneSpatialRefer:
+    pretrain:
+      sources: ['arkitscenes_view_cap']
+  scan_family_base: "dataset/ScanNet"
+  rscan_base: "dataset/3RScan"
+  arkitscene_base: "dataset/Arkitscenes"
+
+# task details: 'Pretrain', 'scanqa', 'spatialrefer'
+task: 'Pretrain'
+data_wrapper:
+  pretrain: 'SceneDatasetWrapper'
+
+# Training details
+trainer: "UniScene3DTrainer"
+ckpt_path: ""
+pretrain_ckpt_path: ""
+dataloader:
+  batchsize: 16
+  num_workers: 4
+  balance_dataset: True
+
+solver:
+  gradient_accumulation_steps: 1
+  epochs_per_save: 5
+  epochs_per_eval: 5
+  lr: 5e-5
+  grad_norm: 5.0
+  epochs: 50
+  optim:
+    name: 'AdamW'
+    args:
+      betas: [0.9, 0.98]
+      weight_decay: 0.05
+  sched:
+    name: 'warmup_cosine'
+    args:
+      warmup_steps: 500
+      minimum_ratio: 0.1
+# Model details
+model:
+  name: UniScene3D
+  modality_dropout:
+    drop_rgb_prob: 0.4
+    drop_pointmap_prob: 0.4
+  pointmap_augmentation:
+    enabled: True
+    z_rotations_deg: [90, 180, 270]
+    scale_range: [0.75, 1.25]
+    translation_range: [-1.0, 1.0]
+  vision:
+    lr: 3.0e-05
+  loss_list: [
+    'SceneViewPM_loss'
+  ]
+  vis_loss_list: [
+    'SceneViewPM_loss'
+  ]

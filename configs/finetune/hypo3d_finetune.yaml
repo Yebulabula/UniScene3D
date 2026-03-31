@@ -1,0 +1,97 @@
+# Experiment general info
+name: "OV_Hypo3D"
+rng_seed: 42
+num_gpu: 1
+mode: "train"
+note: ""
+# Choose keywords to feature your saving directory
+naming_keywords: ["dataloader.batchsize", "task", "note", "time"]
+base_dir: "results"
+exp_dir: ""
+
+resume: False
+
+debug:
+  flag: False
+  hard_debug: False
+  debug_size: 20
+
+logger:
+  name: "wandb"
+  entity: "yem"
+
+# dataset details
+data:
+  train: ['ScanNetHypo3D']
+  val: ['ScanNetHypo3D']
+  test: ['ScanNetHypo3D']
+  args:
+    sem_type: '607'
+  ScanNetHypo3D:
+    train:
+      use_unanswer: True
+    val:
+      use_unanswer: True
+    test:
+      use_unanswer: True
+
+  scan_family_base: "dataset/ScanNet"
+
+# task details: 'pretrain', 'scanrefer', 'referit3d', 'scanqa', 'default'
+task: 'HYPO3D'
+data_wrapper:
+  train: 'ScanFamilyDatasetWrapperQA'
+  val: 'ScanFamilyDatasetWrapperQA'
+  test: 'ScanFamilyDatasetWrapperQA'
+
+# Training details
+trainer: "DefaultTrainer"
+pretrain_ckpt_path: "results/sceneverse_scannet_exp1_b16_Pretrain_all_scannet_training_run1/cur_best_v1/ckpt/ckpt_15.pth"
+
+# dataloader details
+dataloader:
+  # This is a per-gpu batchsize
+  batchsize: 128
+  num_workers: 4
+
+solver:
+  gradient_accumulation_steps: 1
+  epochs_per_save: 100
+  epochs_per_eval: 1
+  lr: 5e-4
+  grad_norm: 5.0
+  epochs: 100
+  optim:
+    name: "AdamW"
+    args:
+      betas: [0.9, 0.98]
+  sched:
+    name: "warmup_cosine"
+    args:
+      warmup_steps: 5000
+
+eval:
+  name: "Hypo3DEval"
+  save: False
+
+# Model details
+model:
+  name: UniScene3D
+  vision:
+    lr: 5e-4
+  heads:
+    head_list: ["qa_head"]
+    qa_head:
+      name: "QAHeadV1"
+      args:
+        hidden_size: 768
+        mlp_size: 256
+        glimpse: 1
+        flat_out_size: 512
+        num_answers: 637
+  loss_list: [
+      "answer_loss"
+  ]
+  vis_loss_list: [
+      "answer_loss"
+  ]

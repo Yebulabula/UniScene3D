@@ -1,0 +1,8 @@
+/results/
+/logs/
+/dataset/
+/wandb/
+__pycache__/
+*.pyc
+TODO.md
+.codex
