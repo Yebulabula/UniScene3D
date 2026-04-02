@@ -306,17 +306,23 @@ code {
 }
 
 .video-shell {
-  margin-top: 8px;
-  padding: 10px 0;
+  width: min(100%, 980px);
+  margin: 8px auto 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: #000000;
 }
 
 .demo-video {
   display: block;
   width: 100%;
-  max-width: 980px;
+  max-width: 100%;
+  aspect-ratio: 2850 / 1334;
+  height: auto;
   margin: 0 auto;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
+  border: none;
   background: #000000;
 }
 
