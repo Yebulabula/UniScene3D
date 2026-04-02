@@ -141,10 +141,6 @@ By default, experiment outputs are written under `results/`, and the runtime con
 
 ## Evaluation
 
-### Low-Shot Evaluation
-
-The benchmark code lives in [src/evaluator/](src/evaluator), with shell entry points under [scripts/](scripts).
-
 ### Viewpoint Grounding
 
 ```bash
