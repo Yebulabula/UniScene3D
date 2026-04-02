@@ -20,7 +20,7 @@
     <img src="https://img.shields.io/badge/Model-Hugging%20Face-f6c343?logo=huggingface&logoColor=black" alt="Model">
   </a>
   <a href="https://huggingface.co/datasets/MatchLab/ScenePoint">
-    <img src="https://img.shields.io/badge/Data-ScenePoint-4dabf7?logo=huggingface&logoColor=white" alt="Data">
+    <img src="https://img.shields.io/badge/Data-ScenePoint-4dabf7?logo=huggingface&logoColor=yellow" alt="Data">
   </a>
 </p>
 
@@ -30,21 +30,14 @@
 
 </div>
 
-Official repository for **UniScene3D**.
-
-UniScene3D learns transferable 3D scene representations from **multi-view colored pointmaps**, combining RGB appearance and world-aligned geometry in a single transformer encoder. The project targets unified scene understanding across:
-
-- viewpoint grounding / view retrieval
-- scene retrieval
-- scene type classification in zero-shot and few-shot settings
-- 3D visual question answering (3D VQA)
+*UniScene3D learns transferable 3D scene representations from **multi-view colored pointmaps**, unifying RGB appearance and world-aligned geometry within a single transformer encoder. We evaluate its effectiveness across diverse 3D scene understanding tasks under zero-shot, few-shot, and task-specific fine-tuning settings.*
 
 ## Contents
 
 - [Key Takeaways](#key-takeaways)
 - [Expected Repository Structure](#expected-repository-structure)
 - [Installation](#installation)
-- [Data Layout](#data-layout)
+- [Data Preparation](#data-preparation)
 - [Pretraining](#pretraining)
 - [Downstream Fine-Tuning](#downstream-fine-tuning)
 - [Low-Shot Evaluation](#low-shot-evaluation)
@@ -110,30 +103,18 @@ pip install torch==2.5.1 torchvision==0.20.1
 pip install -r requirements.txt
 ```
 
-## Data Layout
+## Data Preparation
 
-The repository expects datasets under a local `dataset/` directory. Based on the configs and evaluation scripts, the main paths are:
+Please download the `dataset/` folder from Hugging Face at [MatchLab/ScenePoint](https://huggingface.co/datasets/MatchLab/ScenePoint) and place it at the repository root. This folder includes the language data required for pretraining and evaluation, including:
 
-- `dataset/ScanNet`
-- `dataset/3RScan`
-- `dataset/Arkitscenes`
+- `dataset/refer`
 - `dataset/retrieval`
 - `dataset/classification`
-- `dataset/refer`
+- dataset metadata used by the training and evaluation scripts
 
-The pretraining config in [configs/all_pretrain.yaml](configs/all_pretrain.yaml) uses:
+The scene data are hosted on the same Hugging Face dataset. When you run the training/evaluation scripts, the required scene assets will be downloaded automatically and cached locally.
 
-- `ScanNetSpatialRefer`
-- `RScanSpatialRefer`
-- `ARKitSceneSpatialRefer`
-
-The downstream fine-tuning configs under [configs/finetune](configs/finetune) use ScanNet-based QA datasets such as:
-
-- `ScanNetScanQA`
-- `ScanNetSQA3D`
-- `ScanNetHypo3D`
-
-The low-shot evaluation scripts also expect retrieval/classification metadata under `dataset/retrieval` and `dataset/classification`.
+The processed scene data are derived from the original [ScanNet](https://www.scan-net.org/), [3RScan](https://github.com/WaldJohannaU/3RScan), and [ARKitScenes](https://machinelearning.apple.com/research/arkitscenes) datasets. Please also refer to their official websites for the original data access terms and licenses.
 
 ## Pretraining
 
