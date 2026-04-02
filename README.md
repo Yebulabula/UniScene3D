@@ -68,6 +68,7 @@
 
 ```text
 UniScene3D/
+├── checkpoints/            # Downloaded pretrained checkpoints for evaluation/fine-tuning.
 ├── configs/
 │   ├── all_pretrain.yaml
 │   └── finetune/
@@ -140,6 +141,8 @@ bash scripts/pretraining/pretrain.sh
 By default, experiment outputs are written under `results/`, and the runtime config is saved into each experiment directory by [run.py](run.py).
 
 ## Evaluation
+
+Please download the released model checkpoint and place it under `checkpoints/` before running evaluation or fine-tuning.
 
 ### Viewpoint Grounding
 
