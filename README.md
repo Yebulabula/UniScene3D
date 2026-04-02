@@ -34,7 +34,7 @@
 
 </div>
 
-*UniScene3D learns transferable 3D scene representations from **multi-view colored pointmaps**, unifying RGB appearance and world-aligned geometry within a single transformer encoder. We evaluate its effectiveness across diverse 3D scene understanding tasks under zero-shot, few-shot, and task-specific fine-tuning settings.*
+*UniScene3D learns transferable 3D scene representations from **multi-view colored pointmaps**, unifying RGB appearance and world-aligned geometry within a single ViT encoder. We evaluate its effectiveness across diverse 3D scene understanding tasks under zero-shot, few-shot, and task-specific fine-tuning settings.*
 
 ## Contents
 
@@ -44,8 +44,7 @@
 - [Installation](#installation)
 - [Data Preparation](#data-preparation)
 - [Pretraining](#pretraining)
-- [Downstream Fine-Tuning](#downstream-fine-tuning)
-- [Low-Shot Evaluation](#low-shot-evaluation)
+- [Evaluation](#evaluation)
 - [Acknowledgements](#acknowledgements)
 - [Citation](#citation)
 - [License](#license)
@@ -140,7 +139,9 @@ bash scripts/pretraining/pretrain.sh
 
 By default, experiment outputs are written under `results/`, and the runtime config is saved into each experiment directory by [run.py](run.py).
 
-## Low-Shot Evaluation
+## Evaluation
+
+### Low-Shot Evaluation
 
 The benchmark code lives in [src/evaluator/](src/evaluator), with shell entry points under [scripts/](scripts).
 
@@ -177,7 +178,7 @@ The shared evaluation environment is configured in [scripts/spatial_bench_common
 - `PM_KEY`: default pointmap key, `point_map`
 - `RGB_KEY`: default RGB key, `color_images`
 
-## 3DVQA Fine-Tuning
+### 3D VQA Fine-Tuning
 
 Run the provided launchers:
 
