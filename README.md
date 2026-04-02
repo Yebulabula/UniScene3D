@@ -142,7 +142,7 @@ By default, experiment outputs are written under `results/`, and the runtime con
 
 ## Evaluation
 
-Please download the released model checkpoint and place it under `checkpoints/` before running evaluation or fine-tuning.
+Please download the released [model checkpoint](https://huggingface.co/MatchLab/UniScene3D) and place it under `checkpoints/` before running evaluation or fine-tuning.
 
 ### Viewpoint Grounding
 
