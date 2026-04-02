@@ -34,6 +34,7 @@
 
 ## Contents
 
+- [News](#news)
 - [Key Takeaways](#key-takeaways)
 - [Expected Repository Structure](#expected-repository-structure)
 - [Installation](#installation)
@@ -44,6 +45,10 @@
 - [Acknowledgements](#acknowledgements)
 - [Citation](#citation)
 - [License](#license)
+
+## News
+
+- 🚀 `2026-04-02`: Code, pretrained model, pretraining, and evaluation data are now available.
 
 ## Key Takeaways
 - **Motivation**: Pointmap is a 3D modality that maintains image grid-like format while storing world-frame geometry. Rich pretrained prior in 2D models benefit to point map learning too.
