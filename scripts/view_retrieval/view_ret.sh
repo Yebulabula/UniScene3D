@@ -5,9 +5,7 @@ source "${SCRIPT_DIR}/../spatial_bench_common.sh"
 setup_spatial_bench_env "${SCRIPT_DIR}"
 
 SCANNET_SCAN_ROOT="${SCANNET_SCAN_ROOT:-${SCAN_ROOT:-}}"
-SCANNETPP_SCAN_ROOT="${SCANNETPP_SCAN_ROOT:-}"
 SCANNET_FILENAME_FMT="${SCANNET_FILENAME_FMT:-light_scannet/%s.safetensors}"
-SCANNETPP_FILENAME_FMT="${SCANNETPP_FILENAME_FMT:-light_scannetpp/%s.safetensors}"
 BATCH_VIEWS="${BATCH_VIEWS:-32}"
 
 MODULE="evaluator.view_retrieval.zero_shot_eval_view_retrieval"
@@ -24,30 +22,18 @@ run_eval() {
   local ckpt="$3"
   local jsonl="$4"
   local dataset_name
-  local scan_root
-  local filename_fmt
   local hf_repo_id="${HF_REPO_ID}"
 
   dataset_name="$(basename "${jsonl}")"
-  case "${dataset_name}" in
-    scannetpp_retrieval.jsonl)
-      scan_root="${SCANNETPP_SCAN_ROOT}"
-      filename_fmt="${SCANNETPP_FILENAME_FMT}"
-      ;;
-    *)
-      scan_root="${SCANNET_SCAN_ROOT}"
-      filename_fmt="${SCANNET_FILENAME_FMT}"
-      ;;
-  esac
 
   echo
-  echo "=== model=${model_type} input=${input_mode} dataset=${dataset_name} scan_root=${scan_root} hf_repo_id=${hf_repo_id:-<disabled>} ==="
+  echo "=== model=${model_type} input=${input_mode} dataset=${dataset_name} scan_root=${SCANNET_SCAN_ROOT} hf_repo_id=${hf_repo_id:-<disabled>} ==="
 
   local args=(
     --jsonl "${jsonl}"
-    --scan_root "${scan_root}"
+    --scan_root "${SCANNET_SCAN_ROOT}"
     --hf_repo_id "${hf_repo_id}"
-    --filename_fmt "${filename_fmt}"
+    --filename_fmt "${SCANNET_FILENAME_FMT}"
     --repo_type "${REPO_TYPE}"
     --pm_key "${PM_KEY}"
     --rgb_key "${RGB_KEY}"

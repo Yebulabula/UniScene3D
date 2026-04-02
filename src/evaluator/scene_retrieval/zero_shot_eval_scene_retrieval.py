@@ -156,7 +156,6 @@ def _local_scan_candidates(scan_root: str, filename: str) -> List[Path]:
         root / filename,
         root / basename,
         root / "light_scannet" / basename,
-        root / "light_scannetpp" / basename,
     ]
     deduped = []
     seen = set()
