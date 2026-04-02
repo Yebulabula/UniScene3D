@@ -21,7 +21,7 @@
     <img src="https://img.shields.io/badge/arXiv-UniScene3D-b31b1b?logo=arxiv&logoColor=white" alt="arXiv">
   </a>
   <a href="https://huggingface.co/MatchLab/UniScene3D">
-    <img src="https://img.shields.io/badge/Model-Hugging%20Face-f6c343?logo=huggingface&logoColor=black" alt="Model">
+    <img src="https://img.shields.io/badge/Model-Hugging%20Face-f6c343?logo=huggingface&logoColor=yellow" alt="Model">
   </a>
   <a href="https://huggingface.co/datasets/MatchLab/ScenePoint">
     <img src="https://img.shields.io/badge/Data-ScenePoint-4dabf7?logo=huggingface&logoColor=yellow" alt="Data">
@@ -55,12 +55,9 @@
 - 🚀 `2026-04-02`: Code, pretrained model, pretraining, and evaluation data are now available.
 
 ## Key Takeaways
-- **Motivation**: Pointmap is a 3D modality that maintains image grid-like format while storing world-frame geometry. Rich pretrained prior in 2D models benefit to point map learning too.
-- **Colored pointmaps as a unified input**: UniScene3D combines aligned RGB images and world-frame pointmaps so the model can reason about both visual attributes and 3D structure.
-- **Early multimodal fusion**: instead of encoding RGB and geometry separately and merging late, the model fuses them at the patch level before transformer processing.
-- **Cross-view learning matters**: the pretraining recipe explicitly encourages consistency across views through geometric alignment and grounded semantic alignment.
-- **One encoder, multiple scene tasks**: the learned representation transfers across viewpoint grounding, scene retrieval, scene type classification, and 3D VQA.
-- **Strong empirical performance**: the paper reports state-of-the-art or best-in-comparison results across low-shot evaluation and downstream fine-tuning benchmarks, supporting the effectiveness of the representation.
+- **Research Question**: Effective 3D scene understanding requires both geometry and semantics. Images provide strong semantic information, but the best modality for encoding geometry remains unclear. Pointmaps preserve an image-like grid structure while storing world-frame geometry, making them compatible with foundational vision models. This raises the question: can we extend a 2D encoder into a general 3D scene encoder by enabling it to process both image and pointmap information?
+- **Initial Findings**: Pretrained 2D vision model weights transfer effectively to pointmap learning, outperforming other 3D modalities. In addition, images and pointmaps provide complementary information.
+- **One encoder, Unified scene features**:UniScene3D learns unified 3D scene representations from pixel-aligned, multi-view colored pointmaps by jointly encoding geometry and appearance. These representations are validated across diverse scenes and a wide range of downstream 3D tasks.
 
 ## Expected Repository Structure
 
