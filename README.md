@@ -1,5 +1,3 @@
-# UniScene3D
-
 <div align="center">
 
 <h1>Contrastive Language-Colored Pointmap Pretraining for Unified 3D Scene Understanding</h1>
@@ -26,6 +24,10 @@
   </a>
 </p>
 
+<p>
+  <img src="assets/figure1.png" alt="UniScene3D teaser figure" width="100%">
+</p>
+
 </div>
 
 Official repository for **UniScene3D**.
@@ -39,7 +41,7 @@ UniScene3D learns transferable 3D scene representations from **multi-view colore
 
 ## Contents
 
-- [Highlights](#highlights)
+- [Key Takeaways](#key-takeaways)
 - [Expected Repository Structure](#expected-repository-structure)
 - [Installation](#installation)
 - [Data Layout](#data-layout)
@@ -50,15 +52,13 @@ UniScene3D learns transferable 3D scene representations from **multi-view colore
 - [Citation](#citation)
 - [License](#license)
 
-## Highlights
-
-UniScene3D reports strong results across both low-shot evaluation and task-specific fine-tuning:
-
-- **Scene classification**: 70.7 zero-shot, 72.4 five-shot, and 83.7 ten-shot accuracy.
-- **Scene retrieval**: best zero-shot performance on ScanRefer, Nr3D, and Sr3D across both 5-utterance and 10-utterance settings.
-- **3D VQA**: best reported EM on ScanQA, SQA3D, and Hypo3D among the compared 3D encoder backbones.
-
-These results support the paper’s main claim: jointly modeling appearance and geometry improves transfer for unified 3D scene understanding.
+## Key Takeaways
+- **Motivation**: Pointmap is a 3D modality that maintains image grid-like format while storing world-frame geometry. Rich pretrained prior in 2D models benefit to point map learning too.
+- **Colored pointmaps as a unified input**: UniScene3D combines aligned RGB images and world-frame pointmaps so the model can reason about both visual attributes and 3D structure.
+- **Early multimodal fusion**: instead of encoding RGB and geometry separately and merging late, the model fuses them at the patch level before transformer processing.
+- **Cross-view learning matters**: the pretraining recipe explicitly encourages consistency across views through geometric alignment and grounded semantic alignment.
+- **One encoder, multiple scene tasks**: the learned representation transfers across viewpoint grounding, scene retrieval, scene type classification, and 3D VQA.
+- **Strong empirical performance**: the paper reports state-of-the-art or best-in-comparison results across low-shot evaluation and downstream fine-tuning benchmarks, supporting the effectiveness of the representation.
 
 ## Expected Repository Structure
 
