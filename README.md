@@ -1,14 +1,32 @@
 # UniScene3D
 
-## Contrastive Language-Colored Pointmap Pretraining for Unified 3D Scene Understanding
+<div align="center">
 
-**[Ye Mao](https://yebulabula.github.io/), [Weixun Luo](https://scholar.google.com/citations?user=2Y0-0C8AAAAJ&hl=en&oi=ao), [Ranran Huang](https://ranrhuang.github.io/), [Junpeng Jing](https://tomtomtommi.github.io/), [Krystian Mikolajczyk](https://profiles.imperial.ac.uk/k.mikolajczyk)**
+<h1>Contrastive Language-Colored Pointmap Pretraining for Unified 3D Scene Understanding</h1>
 
-**Imperial College London**
+<p>
+  <a href="https://yebulabula.github.io/">Ye Mao</a>,
+  <a href="https://scholar.google.com/citations?user=2Y0-0C8AAAAJ&hl=en&oi=ao">Weixun Luo</a>,
+  <a href="https://ranrhuang.github.io/">Ranran Huang</a>,
+  <a href="https://tomtomtommi.github.io/">Junpeng Jing</a>,
+  <a href="https://profiles.imperial.ac.uk/k.mikolajczyk">Krystian Mikolajczyk</a>
+</p>
 
-[![arXiv](https://img.shields.io/badge/arXiv-UniScene3D-b31b1b?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2604.00000)
-[![Model](https://img.shields.io/badge/Model-Hugging%20Face-f6c343?logo=huggingface&logoColor=black)](https://huggingface.co/MatchLab/UniScene3D)
-[![Data](https://img.shields.io/badge/Data-ScenePoint-4dabf7?logo=huggingface&logoColor=white)](https://huggingface.co/datasets/MatchLab/ScenePoint)
+<p><strong>Imperial College London</strong></p>
+
+<p>
+  <a href="https://arxiv.org/abs/2604.00000">
+    <img src="https://img.shields.io/badge/arXiv-UniScene3D-b31b1b?logo=arxiv&logoColor=white" alt="arXiv">
+  </a>
+  <a href="https://huggingface.co/MatchLab/UniScene3D">
+    <img src="https://img.shields.io/badge/Model-Hugging%20Face-f6c343?logo=huggingface&logoColor=black" alt="Model">
+  </a>
+  <a href="https://huggingface.co/datasets/MatchLab/ScenePoint">
+    <img src="https://img.shields.io/badge/Data-ScenePoint-4dabf7?logo=huggingface&logoColor=white" alt="Data">
+  </a>
+</p>
+
+</div>
 
 Official repository for **UniScene3D**.
 
@@ -205,7 +223,7 @@ If you find this repository useful, please cite the paper:
 @inproceedings{mao2026uniscene3d,
   title     = {Contrastive Language-Colored Pointmap Pretraining for Unified 3D Scene Understanding},
   author    = {Mao, Ye and Luo, Weixun and Huang, Ranran and Jing, Junpeng and Mikolajczyk, Krystian},
-  booktitle = {European Conference on Computer Vision (ECCV)},
+  booktitle = {arxiv},
   year      = {2026}
 }
 ```
