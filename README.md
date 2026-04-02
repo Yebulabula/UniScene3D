@@ -138,23 +138,6 @@ Run:
 bash scripts/pretraining/pretrain.sh
 ```
 
-This script launches:
-
-```bash
-python launch.py --mode accelerate --gpu_per_node 4 --num_nodes 1 --config configs/all_pretrain.yaml
-```
-
-You can also launch manually with Hydra overrides:
-
-```bash
-python launch.py --mode accelerate --gpu_per_node 4 --num_nodes 1 \
-  --config configs/all_pretrain.yaml \
-  name=UniScene3D \
-  note=my_run \
-  num_gpu=1 \
-  dataloader.batchsize=64
-```
-
 By default, experiment outputs are written under `results/`, and the runtime config is saved into each experiment directory by [run.py](run.py).
 
 ## Low-Shot Evaluation
