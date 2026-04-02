@@ -55,9 +55,15 @@
 - 🚀 `2026-04-02`: Code, pretrained model, pretraining, and evaluation data are now available.
 
 ## Key Takeaways
-- **Research Question**: Effective 3D scene understanding requires both geometry and semantics. Images provide strong semantic information, but the best modality for encoding geometry remains unclear. Pointmaps preserve an image-like grid structure while storing world-frame geometry, making them compatible with foundational vision models. This raises the question: can we extend a 2D encoder into a general 3D scene encoder by enabling it to process both image and pointmap information?
-- **Initial Findings**: Pretrained 2D vision model weights transfer effectively to pointmap learning, outperforming other 3D modalities. In addition, images and pointmaps provide complementary information.
-- **One encoder, Unified scene features**:UniScene3D learns unified 3D scene representations from pixel-aligned, multi-view colored pointmaps by jointly encoding geometry and appearance. These representations are validated across diverse scenes and a wide range of downstream 3D tasks.
+- **Core Question**: Unlike 2D vision, 3D scene understanding still lacks a generalizable encoder like CLIP, largely due to the scarcity of large-scale 3D pretraining data. This raises the question: **can a 2D vision encoder be extended into a general 3D scene encoder without extensive 3D pretraining?**
+
+- **Preliminary Finding**: Pointmaps encode world-frame geometry like point clouds while preserving an image-like format compatible with 2D vision models. Our initial study shows that pretrained 2D vision weights are also beneficial for learning pointmap features.
+
+- **Model Contribution**: **UniScene3D** extends pretrained CLIP models to learn unified 3D scene representations from pixel-aligned, multi-view colored pointmaps by jointly encoding geometry and appearance.
+
+- **Key Training Idea**: We introduce cross-view geometric alignment and grounded view alignment to enforce geometric and semantic consistency across viewpoints.
+
+- **Result**: The learned representations effectively combine complementary information from images and pointmaps, generalize across diverse scenes, and transfer well to a broad range of downstream 3D tasks.
 
 ## Expected Repository Structure
 
