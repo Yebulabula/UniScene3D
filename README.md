@@ -59,7 +59,7 @@
 
 - **Preliminary Finding**: Pointmaps encode world-frame geometry like point clouds while preserving an image-like format compatible with 2D vision models. Our initial study shows that pretrained 2D vision weights are also beneficial for learning pointmap features.
 
-- **Model Contribution**: **UniScene3D** extends pretrained CLIP models to learn unified 3D scene representations from pixel-aligned, multi-view colored pointmaps by jointly encoding geometry and appearance.
+- **Model Contribution**: UniScene3D extends pretrained CLIP models to learn unified 3D scene representations from pixel-aligned, multi-view colored pointmaps by jointly encoding geometry and appearance.
 
 - **Key Training Idea**: We introduce cross-view geometric alignment and grounded view alignment to enforce geometric and semantic consistency across viewpoints.
 
