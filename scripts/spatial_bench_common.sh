@@ -21,8 +21,8 @@ setup_spatial_bench_env() {
   DEVICE="${DEVICE:-cuda}"
   MODEL_ROOT="${MODEL_ROOT:-${PROJECT_ROOT}/src/fg-clip}"
 
-  UNISCENE3D_CKPT="${UNISCENE3D_CKPT:-${PROJECT_ROOT}/results/uniscene3d-base-patch16-224.pth}"
-  POMA3D_CKPT="${POMA3D_CKPT:-${PROJECT_ROOT}/results/full_ckpt_100.pth}"
+  UNISCENE3D_CKPT="${UNISCENE3D_CKPT:-${PROJECT_ROOT}/checkpoints/uniscene3d-base-patch16-224.pth}"
+  POMA3D_CKPT="${POMA3D_CKPT:-${PROJECT_ROOT}/checkpoints/full_ckpt_100.pth}"
   DFN_CKPT="${DFN_CKPT:-}"
   SIGLIP_CKPT="${SIGLIP_CKPT:-}"
   DFN_MODEL_NAME="${DFN_MODEL_NAME:-hf-hub:apple/DFN2B-CLIP-ViT-B-16}"
