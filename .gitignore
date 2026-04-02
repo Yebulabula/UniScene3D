@@ -2,6 +2,7 @@
 /logs/
 /dataset/
 /wandb/
+/eccv/
 __pycache__/
 *.pyc
 TODO.md
