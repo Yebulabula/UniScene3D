@@ -208,6 +208,11 @@ code {
   margin-top: 0;
 }
 
+#demo .section-intro,
+#demo .caption {
+  text-align: center;
+}
+
 .image-panel {
   padding: 8px 0;
   border-radius: 0;
@@ -298,6 +303,21 @@ code {
 
 .viz-nav-right {
   right: 10px;
+}
+
+.video-shell {
+  margin-top: 8px;
+  padding: 10px 0;
+}
+
+.demo-video {
+  display: block;
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: #000000;
 }
 
 .table-block + .table-block {
