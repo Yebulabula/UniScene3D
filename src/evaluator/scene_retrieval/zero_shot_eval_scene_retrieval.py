@@ -30,14 +30,6 @@ from evaluator.common.multimodal_models import (
 )
 
 _CTRL_CHARS = re.compile(r"[\x00-\x08\x0B\x0C\x0E-\x1F]")
-DEFAULT_SCANNET_VAL_SPLIT = (
-    Path(__file__).resolve().parents[4]
-    / "dataset"
-    / "ScanNet"
-    / "annotations"
-    / "splits"
-    / "scannetv2_val.txt"
-)
 DEFAULT_HF_REPO_ID = "MatchLab/ScenePoint"
 
 
@@ -154,12 +146,6 @@ def load_jsonl_group_by_scene(
             if cap:
                 scenes.append((sid, cap))
     return scenes
-
-
-def load_scan_split(split_path: str) -> List[str]:
-    """Load a plain-text split file into a scan id list."""
-    with open(split_path, "r", encoding="utf-8") as f:
-        return [line.strip() for line in f if line.strip()]
 
 
 def _local_scan_candidates(scan_root: str, filename: str) -> List[Path]:
@@ -414,7 +400,6 @@ def main():
     parser.add_argument("--num_workers", type=int, default=2)
     parser.add_argument("--strategy", type=str, default="first", choices=["first", "random", "all"])
     parser.add_argument("--drop_last_incomplete", action="store_true")
-    parser.add_argument("--split_file", type=str, default="")
     args = parser.parse_args()
 
     if args.device == "cuda" and not torch.cuda.is_available():
@@ -430,17 +415,7 @@ def main():
         strategy=args.strategy,
         drop_last_incomplete=args.drop_last_incomplete,
     )
-    if args.split_file:
-        split_scan_ids = set(load_scan_split(args.split_file))
-        items_before_split = len(items)
-        scenes_before_split = len({sid for sid, _ in items})
-        items = [(sid, cap) for sid, cap in items if sid in split_scan_ids]
-        print(
-            f"Kept {len(items)}/{items_before_split} caption queries from "
-            f"{len({sid for sid, _ in items})}/{scenes_before_split} scenes in split {args.split_file}"
-        )
-    else:
-        print("No split file provided; evaluating all items in the JSONL.")
+    print("Evaluating all items in the JSONL.")
     if not args.scan_root and not args.hf_repo_id:
         raise ValueError("Provide at least one of --scan_root or --hf_repo_id.")
     scan_ids = sorted(set(s for s, _ in items))

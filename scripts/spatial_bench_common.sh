@@ -21,7 +21,7 @@ setup_spatial_bench_env() {
   DEVICE="${DEVICE:-cuda}"
   MODEL_ROOT="${MODEL_ROOT:-${PROJECT_ROOT}/src/fg-clip}"
 
-  UNISCENE3D_CKPT="${UNISCENE3D_CKPT:-${PROJECT_ROOT}/results/UniScene3D_scannet_exp1_b16_Pretrain_all_scannet_training_run1/2026-03-31-18:26:40.301882/ckpt/ckpt_5.pth}"
+  UNISCENE3D_CKPT="${UNISCENE3D_CKPT:-${PROJECT_ROOT}/results/uniscene3d-base-patch16-224.pth}"
   POMA3D_CKPT="${POMA3D_CKPT:-${PROJECT_ROOT}/results/full_ckpt_100.pth}"
   DFN_CKPT="${DFN_CKPT:-}"
   SIGLIP_CKPT="${SIGLIP_CKPT:-}"

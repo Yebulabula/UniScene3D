@@ -6,6 +6,7 @@ Shell entry points are organized by task:
 - `scene_classification/`: SpatialBench scene classification launchers.
 - `scene_retrieval/`: SpatialBench scene retrieval launchers.
 - `view_retrieval/`: SpatialBench view retrieval launchers.
+- `datasets/`: dataset maintenance utilities, such as rewriting ScenePoint `.safetensors`.
 - `spatial_bench_common.sh`: shared shell helper for retrieval/classification launchers.
 - Benchmark Python modules live under `evaluator/scene_classification`, `evaluator/scene_retrieval`, and `evaluator/view_retrieval`.
 - `job/`: captured Slurm stdout and stderr logs.

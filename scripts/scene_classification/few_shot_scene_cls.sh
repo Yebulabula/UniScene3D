@@ -60,8 +60,8 @@ run_eval() {
   run_spatial_bench_module "${MODULE}" "${args[@]}"
 }
 
-# run_eval uniscene3d pm+image "${UNISCENE3D_CKPT}"
-run_eval fgclip image ""
-run_eval poma3d pm "${POMA3D_CKPT}"
-run_eval dfn image "${DFN_CKPT}"
-run_eval siglip image "${SIGLIP_CKPT}"
+run_eval uniscene3d pm+image "${UNISCENE3D_CKPT}"
+# run_eval fgclip image ""
+# run_eval poma3d pm "${POMA3D_CKPT}"
+# run_eval dfn image "${DFN_CKPT}"
+# run_eval siglip image "${SIGLIP_CKPT}"

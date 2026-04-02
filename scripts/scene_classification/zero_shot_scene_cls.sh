@@ -58,9 +58,9 @@ run_eval() {
 }
 
 for template in "${TEMPLATES[@]}"; do
-  # run_eval uniscene3d pm+image "${UNISCENE3D_CKPT}" "${template}"
-  run_eval fgclip image "" "${template}"
-  run_eval poma3d pm "${POMA3D_CKPT}" "${template}"
-  run_eval dfn image "${DFN_CKPT}" "${template}"
-  run_eval siglip image "${SIGLIP_CKPT}" "${template}"
+  run_eval uniscene3d pm+image "${UNISCENE3D_CKPT}" "${template}"
+  # run_eval fgclip image "" "${template}"
+  # run_eval poma3d pm "${POMA3D_CKPT}" "${template}"
+  # run_eval dfn image "${DFN_CKPT}" "${template}"
+  # run_eval siglip image "${SIGLIP_CKPT}" "${template}"
 done

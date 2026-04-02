@@ -205,7 +205,7 @@ def main():
 
     scene_emb_list: List[torch.Tensor] = []
     bs = max(1, int(args.batch_scenes))
-    for start in range(0, len(kept_scan_ids), bs):
+    for start in tqdm(range(0, len(kept_scan_ids), bs), desc="Encoding scenes", unit="batch"):
         for sid in kept_scan_ids[start:start + bs]:
             pm = to_vchw(scene_data[sid]["pointmaps"])
             rgb = scene_data[sid]["color_images"]

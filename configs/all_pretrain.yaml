@@ -54,17 +54,17 @@ trainer: "UniScene3DTrainer"
 ckpt_path: ""
 pretrain_ckpt_path: ""
 dataloader:
-  batchsize: 16
+  batchsize: 64
   num_workers: 4
   balance_dataset: True
 
 solver:
   gradient_accumulation_steps: 1
-  epochs_per_save: 5
-  epochs_per_eval: 5
-  lr: 5e-5
+  epochs_per_save: 1
+  epochs_per_eval: 1
+  lr: 1e-4
   grad_norm: 5.0
-  epochs: 50
+  epochs: 20
   optim:
     name: 'AdamW'
     args:
@@ -87,7 +87,7 @@ model:
     scale_range: [0.75, 1.25]
     translation_range: [-1.0, 1.0]
   vision:
-    lr: 3.0e-05
+    lr: 1e-4
   loss_list: [
     'SceneViewPM_loss'
   ]

@@ -13,6 +13,7 @@ import torch
 from huggingface_hub import hf_hub_download
 from huggingface_hub.errors import EntryNotFoundError
 from safetensors.torch import load_file
+from tqdm import tqdm
 
 from evaluator.common.multimodal_models import (
     DEFAULT_DFN_MODEL_ID,
@@ -23,14 +24,6 @@ from evaluator.common.multimodal_models import (
     resolve_scan_filename,
 )
 
-DEFAULT_SCANNET_VAL_SPLIT = (
-    Path(__file__).resolve().parents[4]
-    / "dataset"
-    / "ScanNet"
-    / "annotations"
-    / "splits"
-    / "scannetv2_val.txt"
-)
 DEFAULT_HF_REPO_ID = "MatchLab/ScenePoint"
 
 
@@ -43,12 +36,6 @@ def load_jsonl(path: str) -> List[dict]:
             if line:
                 data.append(json.loads(line))
     return data
-
-
-def load_scan_split(split_path: str) -> List[str]:
-    """Load a plain-text split file into a scan id list."""
-    with open(split_path, "r", encoding="utf-8") as f:
-        return [line.strip() for line in f if line.strip()]
 
 
 def _local_scan_candidates(scan_root: str, filename: str) -> List[Path]:
@@ -168,7 +155,7 @@ def eval_view_retrieval(
     recall_correct = {k: 0 for k in recall_ks}
     visible_recall_correct = {k: 0 for k in recall_ks}
 
-    for item in items:
+    for item in tqdm(items, desc="View retrieval", unit="query"):
         scan_id = item["scan_id"]
         utterance = item["utterance"]
         gt_views = item.get("view_ground_truth")
@@ -247,23 +234,12 @@ def main() -> None:
     parser.add_argument("--device", type=str, default="cuda")
     parser.add_argument("--batch_views", type=int, default=32)
     parser.add_argument("--max_items", type=int, default=-1)
-    parser.add_argument("--split_file", type=str, default="")
     args = parser.parse_args()
 
     items = load_jsonl(args.jsonl)
-    if args.split_file:
-        split_scan_ids = set(load_scan_split(args.split_file))
-        items_before_split = len(items)
-        scenes_before_split = len({item["scan_id"] for item in items if "scan_id" in item})
-        items = [item for item in items if item.get("scan_id") in split_scan_ids]
-        print(
-            f"Kept {len(items)}/{items_before_split} items from "
-            f"{len({item['scan_id'] for item in items})}/{scenes_before_split} scenes in split {args.split_file}"
-        )
-    else:
-        print("No split file provided; evaluating all items in the JSONL.")
-    if args.max_items > 0:
-        items = items[: args.max_items]
+    print("Evaluating all items in the JSONL.")
+    # if args.max_items > 0:
+    items = items
 
     if not args.scan_root and not args.hf_repo_id:
         raise ValueError("Provide at least one of --scan_root or --hf_repo_id.")

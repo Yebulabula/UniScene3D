@@ -95,9 +95,7 @@ def load_pretrain(model: nn.Module, pretrain_ckpt_path: str):
                     k.split(".", 1)[1] if k.startswith(("model.", "target_model.")) else k: v
                     for k, v in state.items()
                 }
-            print(f"Checkpoint keys ({len(state)}):")
-            for key in sorted(state.keys()):
-                print(key)
+            print(f"Checkpoint contains {len(state)} keys.")
             result = model.load_state_dict(state, strict=False)
             print(f"Loaded .pth/.pt | missing={len(result.missing_keys)} unexpected={len(result.unexpected_keys)}")
             return
@@ -116,6 +114,7 @@ def load_pretrain(model: nn.Module, pretrain_ckpt_path: str):
 
     result = model.load_state_dict(weights, strict=False)
     print(f"Loaded .safetensors | missing={len(result.missing_keys)} unexpected={len(result.unexpected_keys)}")
+
 
 
 class BaseMultimodalModel(nn.Module):

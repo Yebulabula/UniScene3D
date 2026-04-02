@@ -6,19 +6,16 @@ setup_spatial_bench_env "${SCRIPT_DIR}"
 
 SCANNET_SCAN_ROOT="${SCANNET_SCAN_ROOT:-${SCAN_ROOT:-}}"
 SCANNETPP_SCAN_ROOT="${SCANNETPP_SCAN_ROOT:-}"
-SCANNET_VAL_SPLIT="${SCANNET_VAL_SPLIT:-${PROJECT_ROOT}/dataset/ScanNet/annotations/splits/scannetv2_val.txt}"
-SCANNETPP_VAL_SPLIT="${SCANNETPP_VAL_SPLIT:-${SCANNETPP_SCAN_ROOT:+${SCANNETPP_SCAN_ROOT%/}/../splits/nvs_sem_val.txt}}"
 SCANNET_FILENAME_FMT="${SCANNET_FILENAME_FMT:-light_scannet/%s.safetensors}"
 SCANNETPP_FILENAME_FMT="${SCANNETPP_FILENAME_FMT:-light_scannetpp/%s.safetensors}"
 MAX_VIEWS="${MAX_VIEWS:-32}"
-N_UTTERANCES="${N_UTTERANCES:-10}"
+N_UTTERANCES="${N_UTTERANCES:-5}"
 BATCH_SIZE="${BATCH_SIZE:-16}"
 NUM_WORKERS="${NUM_WORKERS:-2}"
 STRATEGY="${STRATEGY:-first}"
 MODULE="evaluator.scene_retrieval.zero_shot_eval_scene_retrieval"
 
 JSONLS=(
-  "${RETRIEVAL_DIR}/scannetpp_retrieval.jsonl"
   "${RETRIEVAL_DIR}/scanrefer_retrieval.jsonl"
   "${RETRIEVAL_DIR}/nr3d_retrieval.jsonl"
   "${RETRIEVAL_DIR}/sr3d_retrieval.jsonl"
@@ -32,7 +29,6 @@ run_eval() {
   local dataset_name
   local scan_root
   local filename_fmt
-  local split_file
   local hf_repo_id="${HF_REPO_ID}"
 
   dataset_name="$(basename "${jsonl}")"
@@ -40,12 +36,10 @@ run_eval() {
     scannetpp_retrieval.jsonl)
       scan_root="${SCANNETPP_SCAN_ROOT}"
       filename_fmt="${SCANNETPP_FILENAME_FMT}"
-      split_file="${SCANNETPP_VAL_SPLIT}"
       ;;
     *)
       scan_root="${SCANNET_SCAN_ROOT}"
       filename_fmt="${SCANNET_FILENAME_FMT}"
-      split_file="${SCANNET_VAL_SPLIT}"
       ;;
   esac
 
@@ -72,10 +66,6 @@ run_eval() {
     --device "${DEVICE}"
   )
 
-  if [[ -n "${split_file}" ]]; then
-    args+=(--split_file "${split_file}")
-  fi
-
   if [[ -n "${ckpt}" ]]; then
     args+=(--ckpt "${ckpt}")
   fi
@@ -85,8 +75,9 @@ run_eval() {
 
 for jsonl in "${JSONLS[@]}"; do
   run_eval uniscene3d pm+image "${UNISCENE3D_CKPT}" "${jsonl}"
-  run_eval fgclip image "" "${jsonl}"
-  run_eval poma3d pm "${POMA3D_CKPT}" "${jsonl}"
-  run_eval dfn image "${DFN_CKPT}" "${jsonl}"
-  run_eval siglip image "${SIGLIP_CKPT}" "${jsonl}"
+  # remove comments to run other models 
+  # run_eval fgclip image "" "${jsonl}"
+  # run_eval poma3d pm "${POMA3D_CKPT}" "${jsonl}"
+  # run_eval dfn image "${DFN_CKPT}" "${jsonl}"
+  # run_eval siglip image "${SIGLIP_CKPT}" "${jsonl}"
 done
