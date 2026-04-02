@@ -1,8 +1,8 @@
 <div align="center">
 
-<h2>
-  <span style="letter-spacing:0.18em;">UNISCENE3D</span>
-</h2>
+<p>
+  <img src="assets/paper_logo.png" alt="UniScene3D logo" width="72%">
+</p>
 
 <h1>Contrastive Language-Colored Pointmap Pretraining for Unified 3D Scene Understanding</h1>
 
