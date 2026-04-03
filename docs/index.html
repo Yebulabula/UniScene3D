@@ -70,7 +70,7 @@
           A short video walkthrough of UniScene3D qualitative results and scene understanding behavior.
         </p>
         <div class="video-shell">
-          <video class="demo-video" controls playsinline preload="metadata">
+          <video id="demo-video" class="demo-video" controls autoplay muted loop playsinline preload="metadata">
             <source src="assets/video.mp4" type="video/mp4">
             Your browser does not support the demo video.
           </video>
@@ -363,6 +363,38 @@
           right.addEventListener("click", () => {
             scroller.scrollBy({ left: step(), behavior: "smooth" });
           });
+        }
+      }());
+
+      (function () {
+        const video = document.getElementById("demo-video");
+        if (!video) return;
+        const targetRate = 3.0;
+        const setRate = () => {
+          video.defaultPlaybackRate = targetRate;
+          if (video.playbackRate !== targetRate) {
+            video.playbackRate = targetRate;
+          }
+        };
+        const reinforceRate = () => {
+          let attempts = 0;
+          const timer = window.setInterval(() => {
+            setRate();
+            attempts += 1;
+            if (attempts >= 20) {
+              window.clearInterval(timer);
+            }
+          }, 250);
+        };
+        setRate();
+        video.addEventListener("loadedmetadata", setRate);
+        video.addEventListener("loadeddata", setRate);
+        video.addEventListener("canplay", setRate);
+        video.addEventListener("play", setRate);
+        video.addEventListener("playing", reinforceRate);
+        const playPromise = video.play();
+        if (playPromise && typeof playPromise.catch === "function") {
+          playPromise.then(reinforceRate).catch(() => {});
         }
       }());
     </script>
