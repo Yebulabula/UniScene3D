@@ -17,7 +17,7 @@
 <p><strong>Imperial College London</strong></p>
 
 <p>
-  <a href="https://arxiv.org/abs/2604.00000">
+  <a href="https://arxiv.org/abs/2604.02546">
     <img src="https://img.shields.io/badge/arXiv-UniScene3D-b31b1b?logo=arxiv&logoColor=white" alt="arXiv">
   </a>
   <a href="https://yebulabula.github.io/UniScene3D/">
