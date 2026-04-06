@@ -16,18 +16,18 @@
 
 <p><strong>Imperial College London</strong></p>
 
-<p>
+<p align="center">
   <a href="https://arxiv.org/abs/2604.02546">
-    <img src="https://img.shields.io/badge/arXiv-UniScene3D-b31b1b?logo=arxiv&logoColor=white" alt="arXiv">
+    <img src="https://img.shields.io/badge/arXiv-UniScene3D-b31b1b?logo=arxiv&logoColor=white" alt="arXiv" align="absmiddle">
   </a>
   <a href="https://yebulabula.github.io/UniScene3D/">
-    <img src="https://img.shields.io/badge/Project-Page-111827?logo=googlechrome&logoColor=white" alt="Project Page">
+    <img src="https://img.shields.io/badge/Project-Page-111827?logo=googlechrome&logoColor=white" alt="Project Page" align="absmiddle">
   </a>
   <a href="https://huggingface.co/MatchLab/UniScene3D">
-    <img src="https://img.shields.io/badge/Model-Hugging%20Face-f6c343?logo=huggingface&logoColor=yellow" alt="Model">
+    <img src="https://img.shields.io/badge/Model-Hugging%20Face-f6c343?logo=huggingface&logoColor=yellow" alt="Model" align="absmiddle">
   </a>
   <a href="https://huggingface.co/datasets/MatchLab/ScenePoint">
-    <img src="https://img.shields.io/badge/Data-ScenePoint-4dabf7?logo=huggingface&logoColor=yellow" alt="Data">
+    <img src="https://img.shields.io/badge/Data-ScenePoint-4dabf7?logo=huggingface&logoColor=yellow" alt="Data" align="absmiddle">
   </a>
 </p>
 
