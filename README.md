@@ -5,7 +5,7 @@
 </p>
 
 <h1>Contrastive Language-Colored Pointmap Pretraining for Unified 3D Scene Understanding</h1>
-
+**European Conference on Computer Vision (ECCV) 2026**
 <p>
   <a href="https://yebulabula.github.io/">Ye Mao</a>,
   <a href="https://scholar.google.com/citations?user=2Y0-0C8AAAAJ&hl=en&oi=ao">Weixun Luo</a>,
