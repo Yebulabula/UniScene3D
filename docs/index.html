@@ -6,7 +6,7 @@
     <title>UniScene3D</title>
     <meta
       name="description"
-      content="Project page for UniScene3D: Contrastive Language-Colored Pointmap Pretraining for Unified 3D Scene Understanding."
+      content="Project page for UniScene3D: Contrastive Language-RGB-Pointmap Pretraining for Unified 3D Scene Understanding."
     >
     <link rel="icon" type="image/png" href="assets/paper_logo.png">
     <link rel="stylesheet" href="styles.css">
@@ -15,7 +15,7 @@
     <main class="page">
       <header class="hero">
         <img class="logo" src="assets/paper_logo.png" alt="UniScene3D logo">
-        <h1>Contrastive Language-Colored Pointmap Pretraining for Unified 3D Scene Understanding</h1>
+        <h1>RGB-Pointmap Pretraining for Unified 3D Scene Understanding</h1>
         <p class="authors">
           <a href="https://yebulabula.github.io/">Ye Mao</a>
           <span>&middot;</span>
@@ -86,8 +86,7 @@
           <img class="teaser-image" src="assets/figure1.png" alt="UniScene3D teaser figure">
         </div>
         <p class="caption">
-          <strong>Figure 1.</strong> UniScene3D learns transferable 3D scene representations from multi-view colored
-          pointmaps for viewpoint grounding, scene retrieval, scene type classification, and 3D visual question
+          <strong>Figure 1.</strong> UniScene3D learns transferable 3D scene representations from multi-view RGB-Pointmap for viewpoint grounding, scene retrieval, scene type classification, and 3D visual question
           answering.
         </p>
       </section>
@@ -106,14 +105,7 @@
       <section id="abstract" class="section">
         <h2>Abstract</h2>
         <p>
-          Pretraining 3D encoders by aligning with Contrastive Language-Image Pre-training (CLIP) has emerged as a
-          promising direction to learn generalizable representations for 3D scene understanding. We propose
-          UniScene3D, a transformer-based encoder that learns unified scene representations from multi-view colored
-          pointmaps, jointly modeling image appearance and geometry. For robust colored pointmap representation
-          learning, we introduce cross-view geometric alignment and grounded view alignment to enforce cross-view
-          geometry and semantic consistency. Extensive low-shot and task-specific fine-tuning evaluations on viewpoint
-          grounding, scene retrieval, scene type classification, and 3D VQA demonstrate strong performance, supporting
-          UniScene3D as a unified representation for 3D scene understanding.
+          Pretraining 3D encoders through alignment with Contrastive Language–Image Pre-training (CLIP) has emerged as a promising direction to learn generalizable representations for 3D scene understanding. In this paper, we propose UniScene3D, a transformer-based framework that learns unified 3D scene representations from multi-view RGB–Pointmap by leveraging the priors of a pretrained 2D foundation model. For robust RGB-Pointmap representation learning, we introduce novel cross-view geometric alignment and grounded view alignment to enforce geometry and semantic consistency across views. Extensive low-shot and task-specific fine-tuning across viewpoint grounding, scene retrieval, scene classification, and 3D visual question answering achieves state-of-the-art performance. These results establish UniScene3D as an effective framework for unified 3D scene understanding.
         </p>
       </section>
 
@@ -122,7 +114,7 @@
         <ul class="takeaways">
           <li><strong>Core Question:</strong> Unlike 2D vision, 3D scene understanding still lacks a generalizable encoder like CLIP, largely due to the scarcity of large-scale 3D pretraining data. This raises the question: <strong>can a 2D vision encoder be extended into a general 3D scene encoder without extensive 3D pretraining?</strong></li>
           <li><strong>Preliminary Finding:</strong> Pointmaps encode world-frame geometry like point clouds while preserving an image-like format compatible with 2D vision models. Our initial study shows that pretrained 2D vision weights are also beneficial for learning pointmap features.</li>
-          <li><strong>Model Contribution:</strong> UniScene3D extends pretrained CLIP models to learn unified 3D scene representations from pixel-aligned, multi-view colored pointmaps by jointly encoding geometry and appearance.</li>
+          <li><strong>Model Contribution:</strong> UniScene3D extends pretrained CLIP models to learn unified 3D scene representations from pixel-aligned, multi-view RGB-Pointmaps by jointly encoding geometry and appearance.</li>
           <li><strong>Key Training Idea:</strong> We introduce cross-view geometric alignment and grounded view alignment to enforce geometric and semantic consistency across viewpoints.</li>
           <li><strong>Result:</strong> The learned representations effectively combine complementary information from images and pointmaps, generalize across diverse scenes, and transfer well to a broad range of downstream 3D tasks.</li>
         </ul>
@@ -315,7 +307,7 @@
         <h2>Main Findings</h2>
         <div class="finding-grid">
           <article class="finding-card"><p>UniScene3D transfers well across zero-shot, few-shot, and task-specific fine-tuning settings.</p></article>
-          <article class="finding-card"><p>Colored pointmaps outperform image-only, pointmap-only, and RGB-D alternatives.</p></article>
+          <article class="finding-card"><p>RGB-Pointmaps outperform image-only, pointmap-only, and RGB-D alternatives.</p></article>
           <article class="finding-card"><p>The proposed alignment objectives consistently improve representation quality.</p></article>
           <article class="finding-card"><p>Performance remains strong across different numbers of input views.</p></article>
           <article class="finding-card"><p>Scaling to more pretraining scenes steadily improves downstream results.</p></article>
@@ -327,7 +319,7 @@
         <h2>Conclusion</h2>
         <p>
           UniScene3D is a 3D representation learning method that jointly models geometry and appearance from multi-view
-          colored pointmaps. By leveraging rich cross-view context, it introduces cross-view geometric alignment and
+          RGB-Pointmaps. By leveraging rich cross-view context, it introduces cross-view geometric alignment and
           grounded view alignment objectives for pretraining.
         </p>
         <p>
@@ -340,7 +332,7 @@
       <section id="citation" class="section">
         <h2>Citation</h2>
         <pre><code>@inproceedings{mao2026uniscene3d,
-  title     = {Contrastive Language-Colored Pointmap Pretraining for Unified 3D Scene Understanding},
+  title     = {Contrastive Language-RGB-Pointmap Pretraining for Unified 3D Scene Understanding},
   author    = {Mao, Ye and Luo, Weixun and Huang, Ranran and Jing, Junpeng and Mikolajczyk, Krystian},
   booktitle = {arXiv},
   year      = {2026}
