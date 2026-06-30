@@ -4,7 +4,7 @@
   <img src="assets/paper_logo.png" alt="UniScene3D logo" width="30%">
 </p>
 
-<h1>Contrastive Language-Colored Pointmap Pretraining for Unified 3D Scene Understanding</h1>
+<h1>RGB-Pointmap Pretraining for Unified 3D Scene Understanding</h1>
 European Conference on Computer Vision (ECCV) 2026
 <p>
   <a href="https://yebulabula.github.io/">Ye Mao</a>,
@@ -37,7 +37,7 @@ European Conference on Computer Vision (ECCV) 2026
 
 </div>
 
-*UniScene3D learns transferable 3D scene representations from **multi-view colored pointmaps**, unifying RGB appearance and world-aligned geometry within a single ViT encoder. We evaluate its effectiveness across diverse 3D scene understanding tasks under zero-shot, few-shot, and task-specific fine-tuning settings.*
+*UniScene3D learns transferable 3D scene representations from **multi-view RGB-Pointmap**, unifying RGB appearance and world-aligned geometry within a single ViT encoder. We evaluate its effectiveness across diverse 3D scene understanding tasks under zero-shot, few-shot, and task-specific fine-tuning settings.*
 
 ## Contents
 
@@ -61,7 +61,7 @@ European Conference on Computer Vision (ECCV) 2026
 
 - **Preliminary Finding**: Pointmaps encode world-frame geometry like point clouds while preserving an image-like format compatible with 2D vision models. Our initial study shows that pretrained 2D vision weights are also beneficial for learning pointmap features.
 
-- **Model Contribution**: UniScene3D extends pretrained CLIP models to learn unified 3D scene representations from pixel-aligned, multi-view colored pointmaps by jointly encoding geometry and appearance.
+- **Model Contribution**: UniScene3D extends pretrained CLIP models to learn unified 3D scene representations from pixel-aligned, multi-view RGB-Pointmap by jointly encoding geometry and appearance.
 
 - **Key Training Idea**: We introduce cross-view geometric alignment and grounded view alignment to enforce geometric and semantic consistency across viewpoints.
 
@@ -200,7 +200,7 @@ If you find this repository useful, please cite the paper:
 
 ```bibtex
 @inproceedings{mao2026uniscene3d,
-  title     = {Contrastive Language-Colored Pointmap Pretraining for Unified 3D Scene Understanding},
+  title     = {RGB-Pointmap Pretraining for Unified 3D Scene Understanding},
   author    = {Mao, Ye and Luo, Weixun and Huang, Ranran and Jing, Junpeng and Mikolajczyk, Krystian},
   booktitle = {arxiv},
   year      = {2026}
