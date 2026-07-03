@@ -54,6 +54,7 @@ European Conference on Computer Vision (ECCV) 2026
 
 ## News
 
+- 🚀 `2026-06-20`: We are thrilled to share that our paper has been accepted to ECCV 2026, see you in Sweden 🇸🇪!
 - 🚀 `2026-04-02`: Code, pretrained model, pretraining, and evaluation data are now available.
 
 ## Key Takeaways
