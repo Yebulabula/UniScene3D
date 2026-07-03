@@ -79,8 +79,30 @@ code {
 }
 
 .affiliation {
-  margin: 0 0 16px;
+  margin: 0 0 8px;
   color: var(--muted);
+}
+
+.venue {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin: 0 0 16px;
+  color: var(--text);
+  font-size: 0.96rem;
+  font-weight: 700;
+}
+
+.venue-icon {
+  width: 16px;
+  height: 16px;
+  stroke: var(--accent);
+  fill: none;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: 0 0 auto;
 }
 
 .links {
