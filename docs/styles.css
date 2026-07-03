@@ -63,7 +63,7 @@ code {
 
 .hero h1 {
   max-width: 980px;
-  margin: 0 auto 14px;
+  margin: 0 auto 8px;
   font-size: clamp(1.65rem, 3vw, 2.35rem);
   line-height: 1.18;
   letter-spacing: -0.03em;
@@ -84,25 +84,12 @@ code {
 }
 
 .venue {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  margin: 0 0 16px;
-  color: var(--text);
-  font-size: 0.96rem;
-  font-weight: 700;
-}
-
-.venue-icon {
-  width: 16px;
-  height: 16px;
-  stroke: var(--accent);
-  fill: none;
-  stroke-width: 1.9;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  flex: 0 0 auto;
+  margin: 0 0 14px;
+  color: #7c3aed;
+  font-size: clamp(1.3rem, 2.4vw, 1.85rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: 0;
 }
 
 .links {
